@@ -11,6 +11,9 @@ DICT = "american-english"
 
 
 def get_reg_expressions(letters):
+    """Generates a list of regular expressions for all the unique permutations
+    of the given letters. These REs will then be matched against all the words
+    in a given dictionary."""
     reg_expressions = []
     iterations = itertools.permutations(letters)
 
@@ -30,6 +33,8 @@ def get_reg_expressions(letters):
 
 
 def word_matches_regexp_list(word, regexp_list):
+    """Returns True if any of the regular expressions in the given list match
+    the given word. Returns False otherwise."""
     for regexp in regexp_list:
         if re.search(regexp, word):
             return True
@@ -37,6 +42,7 @@ def word_matches_regexp_list(word, regexp_list):
 
 
 def main(argv):
+    """My main() man!"""
     letters = argv[1]
     dictionary = open(DICT)
 
