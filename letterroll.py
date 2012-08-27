@@ -29,6 +29,13 @@ def get_reg_expressions(letters):
     return list(set(reg_expressions))
 
 
+def word_matches_regexp_list(word, regexp_list):
+    for regexp in regexp_list:
+        if re.search(regexp, word):
+            return True
+    return False
+
+
 def main(argv):
     letters = argv[1]
     dictionary = open(DICT)
@@ -37,10 +44,11 @@ def main(argv):
     for word in dictionary:
         # loop through all possible reg expressions
         reg_expressions = get_reg_expressions(letters)
-        for regexp in reg_expressions:
-            if re.search(regexp, word) and "'" not in word: # no contractions
+        if word_matches_regexp_list(word, reg_expressions):
+            # no contractions or proper nouns
+            if "'" not in word and not word[0].isupper():
                 print word,
-                break # if we find a match, go on to next word (avoid dupes)
+
     dictionary.close()
 
 

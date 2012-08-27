@@ -29,5 +29,22 @@ class TestGenRegExp(unittest.TestCase):
         self.assertEqual(re, regexp)
 
 
+class TestWordMatchesRegExpList(unittest.TestCase):
+    def test_one_to_one(self):
+        word = "a"
+        regexp_list = [r"a"]
+        self.assertTrue(l.word_matches_regexp_list(word, regexp_list))
+
+    def test_one_to_many(self):
+        word = "giantboner"
+        regexp_list = [r"asdfsdafsd", r"boner", r"cray cray"]
+        self.assertTrue(l.word_matches_regexp_list(word, regexp_list))
+
+    def test_should_fail(self):
+        word = "giantboner"
+        regexp_list = [r"asdfsdafsd", r"bnr", r"cray cray"]
+        self.assertFalse(l.word_matches_regexp_list(word, regexp_list))
+
+
 if __name__ == "__main__":
     unittest.main()
