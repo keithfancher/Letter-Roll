@@ -1,5 +1,25 @@
 README
 ======
 
-Helps you cheat at "Letter Roll," a Boggle-esque board game. More info about
-the game here: http://www.marblesthebrainstore.com/letter-roll/
+A simple script that helps you cheat at "Letter Roll," a Boggle-esque dice
+game. More info about the game here:
+
+http://www.marblesthebrainstore.com/letter-roll/
+
+
+USAGE
+-----
+Just call the script with the letters you've rolled and the matching words will
+be printed to standard output:
+
+    $ ./letterroll.py ajbr
+    abjuration
+    abjurations
+    abjure
+    abjured
+    abjures
+    abjuring
+    [etc.]
+
+Then just write them down as quickly as your wrists can manage, taking care not
+to reveal your underhandedness to your poor, unsuspecting opponents.
