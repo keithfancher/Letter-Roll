@@ -1,0 +1,6 @@
+TODO:
+=====
+* check input better
+* better help/explanations/etc
+* support gzipped dictionaries
+* support passing dictionary on command line
