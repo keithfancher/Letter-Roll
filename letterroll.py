@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
 
-import re
 import itertools
+import re
+import sys
 
 
+# filename of the dictionary to use (assumes one word per line)
 DICT = "american-english"
-LETTERS = "ecp"
-RE = r"[a-z]*e[a-z]*c[a-z]*p[a-z]*" # and all orderings of the letters... capital?
 
 
 def get_reg_expressions(letters):
@@ -29,13 +29,20 @@ def get_reg_expressions(letters):
     return list(set(reg_expressions))
 
 
-def main():
-    d = open(DICT)
-    for word in d:
-        if re.search(RE, word) and "'" not in word:
-            print word,
-    d.close()
+def main(argv):
+    letters = argv[1]
+    dictionary = open(DICT)
+
+    # loop through all words in dictionary
+    for word in dictionary:
+        # loop through all possible reg expressions
+        reg_expressions = get_reg_expressions(letters)
+        for regexp in reg_expressions:
+            if re.search(regexp, word) and "'" not in word: # no contractions
+                print word,
+                break # if we find a match, go on to next word (avoid dupes)
+    dictionary.close()
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv)
