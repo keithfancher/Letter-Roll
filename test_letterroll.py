@@ -23,6 +23,11 @@ class TestGenRegExp(unittest.TestCase):
         regexp = sorted([r"[a-z]*a[a-z]*b[a-z]*c[a-z]*", r"[a-z]*a[a-z]*c[a-z]*b[a-z]*", r"[a-z]*b[a-z]*a[a-z]*c[a-z]*", r"[a-z]*b[a-z]*c[a-z]*a[a-z]*", r"[a-z]*c[a-z]*a[a-z]*b[a-z]*", r"[a-z]*c[a-z]*b[a-z]*a[a-z]*"])
         self.assertEqual(re, regexp)
 
+    def test_repeated_letters(self):
+        re = sorted(l.get_reg_expressions("aa"))
+        regexp = sorted([r"[a-z]*a[a-z]*a[a-z]*"])
+        self.assertEqual(re, regexp)
+
 
 if __name__ == "__main__":
     unittest.main()
