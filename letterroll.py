@@ -2,6 +2,7 @@
 
 
 import argparse
+import gzip
 import itertools
 import re
 
@@ -57,7 +58,11 @@ def get_args():
 def main():
     """My main() man!"""
     args = get_args()
-    dictionary = open(args.dict_file)
+
+    if args.gunzip_dict:
+        dictionary = gzip.open(args.dict_file)
+    else:
+        dictionary = open(args.dict_file)
 
     # loop through all words in dictionary
     for word in dictionary:
