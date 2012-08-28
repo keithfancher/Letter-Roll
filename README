@@ -13,14 +13,14 @@ Call the script with the filename of a dictionary (one is included if you need
 it) and the letters you've rolled. The matching words will be printed to
 standard output:
 
-    $ ./letterroll.py american-english ajbr
-    abjuration
-    abjurations
-    abjure
+    $ ./letterroll.py american-english abjd
     abjured
-    abjures
-    abjuring
-    [etc.]
+    adjustable
+    blackjacked
+    jabbed
+    jabbered
+    jawboned
+    subjugated
 
 Then just write them down as quickly as your wrists can manage, taking care not
 to reveal your underhandedness to your poor, unsuspecting opponents.
