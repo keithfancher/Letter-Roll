@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
 
+import argparse
 import itertools
 import re
-import sys
 
 
 # filename of the dictionary to use (assumes one word per line)
@@ -41,15 +41,27 @@ def word_matches_regexp_list(word, regexp_list):
     return False
 
 
-def main(argv):
+def get_args():
+    """Gets and parses command line arguments"""
+    parser = argparse.ArgumentParser()
+    # TODO: gzip!
+    parser.add_argument('-z', '--gunzip-dict', action='store_true', default=False,
+                        help='gunzip the dictionary before searching')
+    parser.add_argument('dict_file', action='store',
+                        help='the dictionary to search through')
+    parser.add_argument('letters', action='store',
+                        help='the letters you rolled')
+    return parser.parse_args()
+
+
+def main():
     """My main() man!"""
-    letters = argv[1]
-    dictionary = open(DICT)
+    args = get_args()
+    dictionary = open(args.dict_file)
 
     # loop through all words in dictionary
     for word in dictionary:
-        # loop through all possible reg expressions
-        reg_expressions = get_reg_expressions(letters)
+        reg_expressions = get_reg_expressions(args.letters)
         if word_matches_regexp_list(word, reg_expressions):
             # no contractions or proper nouns
             if "'" not in word and not word[0].isupper():
@@ -59,4 +71,4 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    main(sys.argv)
+    main()

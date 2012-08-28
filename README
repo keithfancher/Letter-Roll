@@ -9,10 +9,11 @@ http://www.marblesthebrainstore.com/letter-roll/
 
 USAGE
 -----
-Just call the script with the letters you've rolled and the matching words will
-be printed to standard output:
+Call the script with the filename of a dictionary (one is included if you need
+it) and the letters you've rolled. The matching words will be printed to
+standard output:
 
-    $ ./letterroll.py ajbr
+    $ ./letterroll.py american-english ajbr
     abjuration
     abjurations
     abjure
