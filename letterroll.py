@@ -7,10 +7,6 @@ import itertools
 import re
 
 
-# filename of the dictionary to use (assumes one word per line)
-DICT = "american-english"
-
-
 def get_reg_expressions(letters):
     """Generates a list of regular expressions for all the unique permutations
     of the given letters. These REs will then be matched against all the words
@@ -45,7 +41,6 @@ def word_matches_regexp_list(word, regexp_list):
 def get_args():
     """Gets and parses command line arguments"""
     parser = argparse.ArgumentParser()
-    # TODO: gzip!
     parser.add_argument('-z', '--gunzip-dict', action='store_true', default=False,
                         help='gunzip the dictionary before searching')
     parser.add_argument('dict_file', action='store',
@@ -64,7 +59,6 @@ def main():
     else:
         dictionary = open(args.dict_file)
 
-    # loop through all words in dictionary
     for word in dictionary:
         reg_expressions = get_reg_expressions(args.letters)
         if word_matches_regexp_list(word, reg_expressions):
