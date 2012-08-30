@@ -38,6 +38,21 @@ def word_matches_regexp_list(word, regexp_list):
     return False
 
 
+def get_matching_words(letters, dictionary):
+    """Searches the given dictionary file for words that match the rolled
+    letters. Returns words as a list."""
+    matching_words = []
+
+    for word in dictionary:
+        reg_expressions = get_reg_expressions(letters)
+        if word_matches_regexp_list(word, reg_expressions):
+            # no contractions or proper nouns
+            if "'" not in word and not word[0].isupper():
+                matching_words.append(word.strip()) # strip whitespace
+
+    return matching_words
+
+
 def get_args():
     """Gets and parses command line arguments"""
     parser = argparse.ArgumentParser()
@@ -59,12 +74,9 @@ def main():
     else:
         dictionary = open(args.dict_file)
 
-    for word in dictionary:
-        reg_expressions = get_reg_expressions(args.letters)
-        if word_matches_regexp_list(word, reg_expressions):
-            # no contractions or proper nouns
-            if "'" not in word and not word[0].isupper():
-                print word,
+    matching_words = get_matching_words(args.letters, dictionary)
+    for word in matching_words:
+        print word
 
     dictionary.close()
 
