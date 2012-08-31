@@ -42,9 +42,9 @@ def get_matching_words(letters, dictionary):
     """Searches the given dictionary file for words that match the rolled
     letters. Returns words as a list."""
     matching_words = []
+    reg_expressions = get_reg_expressions(letters)
 
     for word in dictionary:
-        reg_expressions = get_reg_expressions(letters)
         if word_matches_regexp_list(word, reg_expressions):
             # no contractions or proper nouns
             if "'" not in word and not word[0].isupper():
