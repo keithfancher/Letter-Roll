@@ -1,11 +1,14 @@
 {% extends "layout.html" %}
 {% block body %}
-  {{ letters }}
-  <ul class=results>
+
+  <ul class="unstyled results">
+
   {% for word in matching_words %}
     <li>{{ word }}</li>
   {% else %}
     <li>No matches?!</li>
   {% endfor %}
+
   </ul>
+
 {% endblock %}

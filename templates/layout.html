@@ -1,18 +1,33 @@
-<!doctype html>
-<title>Cheater!</title>
-<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>LetterRoll Cheater!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}" />
+</head>
+<body>
 
-<div class=page>
+<div id="content">
 
     <h1>Cheater!</h1>
-    <div class=metanav>
+
+    <p>
+    Enter the letters you've rolled here:
+    </p>
+
+    <div id="searchform">
+      <form class="form-inline" name="input" action="/" method="POST">
+        <input type="text" name="q" placeholder="{{ letters }}" />
+        <button type="submit" class="btn">Go!</button>
+      </form>
     </div>
 
-    {% for message in get_flashed_messages() %}
-        <div class=flash>{{ message }}</div>
-    {% endfor %}
-
+    <div id="body">
     {% block body %}{% endblock %}
+    </div>
 
+    <script src="{{ url_for('static', filename='bootstrap.min.js')}}"></script>
 </div>
 
+</body>
+</html>
