@@ -18,9 +18,10 @@ app.config.from_object(__name__)
 
 
 @app.route('/', methods=['POST', 'GET'])
+@app.route('/results/') # empty results just points to index
 def index():
-    if request.method == 'POST':
-        return redirect('/results/' + request.form['q'])
+    if request.method == 'POST' and request.form['q']:
+        return redirect(url_for('show_results', letters=request.form['q']))
 
     return render_template('layout.html')
 
