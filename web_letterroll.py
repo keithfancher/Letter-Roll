@@ -36,4 +36,4 @@ def show_results_for_letters(letters):
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0') # listen on public IPs
