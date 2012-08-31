@@ -24,3 +24,23 @@ standard output:
 
 Then just write them down as quickly as your wrists can manage, taking care not
 to reveal your underhandedness to your poor, unsuspecting opponents.
+
+
+WEB INTERFACE
+-------------
+I also threw together a basic web interface, so you can more easily cheat with
+your phone (or other machines on your network, or whatever). First, make sure
+you've got Flask installed:
+
+    $ sudo pip install flask
+
+Then start the server:
+
+    $ ./web_letterroll.py
+
+Now you can navigate to 127.0.0.1:5000 in your browser and you should be good
+to go!
+
+Note: It's fine to run this on a firewalled machine on your local network, but
+you probably shouldn't run it on any computer that's exposed to the Big Bad Old
+Internet!  (Especially while it's in debug mode...)
