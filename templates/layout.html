@@ -18,7 +18,7 @@
     <div id="searchform">
       <form class="form-inline" name="input" action="/" method="POST">
         <input type="text" name="q" placeholder="{{ letters }}" />
-        <button type="submit" class="btn">Go!</button>
+        <button type="submit" class="btn btn-inverse" id="button">Go!</button>
       </form>
     </div>
 
@@ -26,7 +26,17 @@
     {% block body %}{% endblock %}
     </div>
 
+    <script src="{{ url_for('static', filename='jquery.js')}}"></script>
     <script src="{{ url_for('static', filename='bootstrap.min.js')}}"></script>
+    <script>
+        $(document).ready(function(){
+            $('#button').button();
+
+            $('#button').click(function() {
+              $(this).button('loading');
+            });
+        });
+    </script>
 </div>
 
 </body>
