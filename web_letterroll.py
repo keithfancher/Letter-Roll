@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 
-from flask import Flask, request, redirect, url_for, render_template
+from flask import Flask, redirect, render_template, request, url_for
 
 import letterroll
 
@@ -18,7 +18,7 @@ app.config.from_object(__name__)
 
 
 @app.route('/', methods=['POST', 'GET'])
-def show_form():
+def index():
     if request.method == 'POST':
         return redirect('/results/' + request.form['q'])
 
@@ -26,13 +26,12 @@ def show_form():
 
 
 @app.route('/results/<letters>')
-def show_results_for_letters(letters):
-    # open dictionary
+def show_results(letters):
     dictionary = open(DICTIONARY)
-    # TODO: don't pass entire dictionary, huge waste o' memory?
     matching_words = letterroll.get_matching_words(letters, dictionary)
     dictionary.close()
-    return render_template('show_results.html', letters=letters, matching_words=matching_words)
+    return render_template('show_results.html', letters=letters,
+                           matching_words=matching_words)
 
 
 if __name__ == '__main__':
